@@ -20,7 +20,7 @@ Stock Valuation Progress:
 
 ## Step 0: Industry → Method
 
-Use `financial_metrics` to get sector/industry. Then pick method:
+Use `get_financials` with query `"[TICKER] financial metrics snapshot"` to get sector/industry. Then pick method:
 
 | Sector | Primary Method | Key Metrics |
 |--------|---------------|-------------|
@@ -37,7 +37,7 @@ Use `financial_metrics` to get sector/industry. Then pick method:
 Same sub-sector, 0.5x-5x size range.
 
 ### 1.2 Collect Data
-Use `financial_metrics` tool for:
+Use `get_financials` with query `"[TICKER] financial metrics snapshot"` for:
 - Revenue, Rev Growth, Gross Margin, EBITDA Margin
 - EV/Revenue, EV/EBITDA, P/E, P/B
 
@@ -66,9 +66,9 @@ Use `get_financials` to extract: Revenue, EBITDA, CapEx, ΔNWC (3-5 years)
 **Note:** If Terminal Value > 70% of EV, flag as high sensitivity.
 
 ### 2.3 WACC
-- Rf: 10Y UST (web_search)
-- ERP: 5.0% (Damodaran)
-- Beta: `financial_metrics`
+- Rf: 10Y UST (use `web_search` for current yield)
+- ERP: 5.0% (Damodaran NYU, but use `web_search` to confirm latest)
+- Beta: `get_financials` with query `"[TICKER] financial metrics snapshot"`
 - Ke = Rf + β × ERP
 - WACC = E/V × Ke + D/V × Kd
 
